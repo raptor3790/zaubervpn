@@ -1,0 +1,106 @@
+.content {
+    margin-top: 93px;
+    min-height: 500px;
+    padding: 80px 0;
+
+    .section-head {
+        margin-bottom: 50px;
+
+        h3 {
+            font-weight: 300;
+        }
+    }
+
+    .price .item {
+        cursor: pointer;
+        border: 3px solid #fff;
+        
+        &.active {
+            border: 3px solid #EE3158;
+        }
+    }
+
+    .payment-type {
+        cursor: pointer;
+        padding: 15px;
+        border: 2px solid white;
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+
+        &.active {
+            border: 2px solid #007bff;
+        }
+
+        .card-title {
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .card-body {
+            padding: 0;
+            .card-img-container {
+                padding-left: 35px;
+                padding-top: 10px;
+
+                .card-img {
+                    width: auto;
+                    height: 20px;
+                }
+            }
+        }
+        
+        .custom-control.custom-radio {
+            min-height: 20px;
+            padding-left: 20px;
+
+            .custom-control-label {
+                cursor: pointer;
+                font-size: 15px;
+                font-weight: 500;
+                margin-top: 4px;
+                margin-left: 15px;
+
+                &::after, &:before {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+
+    .payment-info {
+        padding: 30px;
+
+        .payment-desc {
+            .price-desc {
+                font-size: 15px;
+            }
+    
+            .price {
+                font-size: 16px;
+                font-weight: 600;
+            }
+    
+            .total-price-desc {
+                font-size: 20px;
+                font-weight: 600;
+            }
+    
+            .total-price {
+                font-size: 18px;
+                font-weight: 600;
+            }
+    
+            .info-row {
+                margin-bottom: 15px;
+            }
+        }
+
+        .payment-form {
+            max-width: 500px;
+
+            .split-date {
+                margin: 10px 5px 0;
+            }
+        }
+    }
+}

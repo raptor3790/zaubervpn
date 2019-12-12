@@ -1,0 +1,62 @@
+﻿<section class="content">
+  <app-loading [condition]="loading"></app-loading>
+  <div class="container">
+    <div class="section-head text-center">
+      <h3>Contact</h3>
+    </div>
+
+    <div class="row">
+
+      <div class="offset-lg-1 col-lg-10">
+        <form [formGroup]="contactForm" class="form" id="contact-form" method="post" (ngSubmit)="onSubmit($event)">
+
+          <div class="controls">
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" formControlName="name" placeholder="Name *">
+                  <div *ngIf="isInvalid('name')" class="help-block with-errors">
+                    <ul class="list-unstyled"><li>Name is required.</li></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="email" formControlName="email" placeholder="Email *">
+                  <div *ngIf="isInvalid('email')" class="help-block with-errors">
+                    <ul *ngIf="controls.email.errors.required" class="list-unstyled"><li>Email is required.</li></ul>
+                    <ul *ngIf="controls.email.errors.email" class="list-unstyled"><li>Invalid email address.</li></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input type="text" formControlName="subject" placeholder="Subject">
+                  <div *ngIf="isInvalid('subject')" class="help-block with-errors">
+                    <ul class="list-unstyled"><li>Subject is required.</li></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <textarea formControlName="message" placeholder="Your Message *" rows="4"></textarea>
+                  <div *ngIf="isInvalid('message')" class="help-block with-errors">
+                    <ul class="list-unstyled"><li>Message is required.</li></ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 text-center">
+                <button type="submit" class="butn butn-bg"><span>Send Message</span></button>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>

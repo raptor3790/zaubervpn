@@ -1,0 +1,22 @@
+.navbar {
+    padding: 1rem 1rem;
+    margin-bottom: 15px;
+
+    background: #fff;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #222;
+}
+
+@media (max-width: 640px) {
+    .navbar .navbar-nav .nav-link {
+        color: white;
+    }
+}
+
+
+.navbar .icon-bar {
+    color: #222;
+}

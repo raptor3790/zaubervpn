@@ -1,0 +1,31 @@
+.content {
+    margin-top: 93px;
+    min-height: 500px;
+    padding: 80px 0;
+
+    .section-head {
+        margin-bottom: 50px;
+
+        h3 {
+            font-weight: 300;
+        }
+    }
+
+    h6 {
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    .card{
+        min-height: 380px;
+    }
+
+    .info-row {
+        font-family: 'Muli', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #7f7f7f;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+}

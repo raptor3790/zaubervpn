@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'src/assets/css/plugins.scss';
+
+@import 'src/assets/css/style.scss';
+
+@import 'src/assets/plugins/jquery-nice-select-1.1.0/scss/nice-select.scss';
+
+form {
+    .form-label {
+        padding-left: 20px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #777;
+    }
+    
+    .login-navigation{
+        padding: 0 20px;
+        
+        a {
+            text-decoration: underline;
+            color: #007bff;
+            font-size: 13px;
+        }
+    }
+
+    .form-select {
+        background-color: #f7f7f7;
+        border: 1px solid #f7f7f7;
+        width: 100%;
+        border-radius: 30px;
+        float: none;
+    
+        ul {
+            width: 100%;
+            border-radius: 20px;
+        }
+    }
+}
+
+// form invalid
+.is-invalid {
+    border: 1px solid #ce7373 !important;
+}
+
+.invalid-error-block {
+    color: #ce7373;
+    padding: 0 20px;
+    font-size: 13px;
+}
+
+.snotifyToast__body {
+    font-size: 15px;
+}

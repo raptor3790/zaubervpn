@@ -1,0 +1,15 @@
+.img-app {
+    width: 150px;
+    height: auto;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    &:hover {
+        opacity: 0.6;
+    }
+}

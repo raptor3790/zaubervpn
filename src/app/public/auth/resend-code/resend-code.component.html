@@ -1,0 +1,52 @@
+﻿<section class="content">
+  <app-loading [condition]="loading"></app-loading>
+  <div class="container">
+    <div class="row">
+
+      <div class="section-head text-center col-sm-12">
+        <h3>Send Request Verify Code</h3>
+      </div>
+
+      <div class="offset-lg-1 col-lg-10">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+
+          <div class="controls">
+
+            <div class="row">
+
+              <div class="col-md-6 offset-md-3">
+                <app-alert></app-alert>
+              </div>
+              
+              <div class="col-md-6 offset-md-3">
+                <div class="form-group">
+                  <input type="email" formControlName="username" placeholder="Email *" [class.is-invalid]="validationErrors?.username" readonly/>
+
+                  <div *ngIf="validationErrors?.username" class="invalid-error-block">
+                    <span class="form-control-feedback">{{ validationErrors?.username[1] }}</span>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+            <div class="row login-navigation">
+              <div class="col-md-6 offset-md-3">
+                <div class="form-group">
+                  <a routerLink="/auth/verifyemail" class="float-right">verify email</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="butn butn-bg"><span>Send request</span></button>
+              </div>
+            </div>
+              
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

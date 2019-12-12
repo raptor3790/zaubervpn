@@ -1,0 +1,39 @@
+﻿<section class="content">
+  <app-loading [condition]="loading"></app-loading>
+  <div class="container">
+    <div class="section-head text-center">
+      <h3>Subscriptions</h3>
+    </div>
+
+    <div class="row">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Plan Name</th>
+            <th>Payment Type</th>
+            <th>Payment Status</th>
+            <th>Applied VAT</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Remaining Days</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let subscription of subscriptions; let i=index;">
+            <td>{{ i + 1 }}</td>
+            <td>{{ subscription.subscriptionPlan?.name }}</td>
+            <td>{{ subscription.paymentMethod?.method }}</td>
+            <td>{{ subscription.paymentStatus?.status }}</td>
+            <td>{{ subscription.appliedVAT }} %</td>
+            <td>{{ subscription.startDate | date:'yyyy-MM-dd' }}</td>
+            <td>{{ subscription.endDate | date:'yyyy-MM-dd' }}</td>
+            <td>{{ subscription.remainingDays }} (days)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>

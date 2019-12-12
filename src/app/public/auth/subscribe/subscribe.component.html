@@ -1,0 +1,476 @@
+﻿<section class="content">
+  <app-loading [condition]="loading"></app-loading>
+
+  <div class="container">
+    <div class="row section-header">
+      <div class="col-lg-10">
+        <div class="section-title">
+          <h4 class="title">Get a VPN that takes your privacy seriously</h4>
+        </div>
+
+        <div class="mt-4 ml-4 specific-list">
+          <h5><span class="fa fa-check"></span>Access 5,074 servers worldwide</h5>
+          <h5><span class="fa fa-check"></span>No logs policy</h5>
+          <h5><span class="fa fa-check"></span>Connect 6 devices at the same time</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- step 1 -->
+    <div class="step-body">
+      <div class="step-head">
+        <span class="badge badge-secondary pull-left">Step 1</span>
+        <h5>Choose a plan</h5>
+      </div>
+
+      <div class="pricing-tables full-width">
+        <div class="row price">
+
+          <div *ngFor="let planItem of planList" class="col-lg-4">
+            <div class="item mb-md50" [class.active]="selectedPlanID == planItem.ID"
+              (click)="onSelectPlan(planItem.ID)">
+              <div class="type">
+                <h4>{{ planItem.name }}</h4>
+              </div>
+
+              <div class="value">
+                <h3><span>{{ planItem.currency?.sign }}</span>{{ planItem.price }}</h3>
+                <span class="per">/ Month</span>
+              </div>
+
+              <div class="features">
+                <ul>
+                  <li>{{ planItem.description }}</li>
+                  <li>Total: {{ planItem.currency?.sign }}{{ planItem.price * planItem.months | number: '0.2-2' }} / {{ planItem.months }} months</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--./ step 1 -->
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)">
+      <!-- step 2 -->
+      <div class="step-body">
+        <div class="step-head">
+          <span class="badge badge-secondary pull-left">Step 2</span>
+          <h5>Create an account</h5>
+        </div>
+
+        <!-- user information form-->
+        <div class="controls form">
+
+          <div class="row">
+            <!-- User Type -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">User Type</label>
+                <select formControlName="type" class="form-select" id="select-type">
+                  <option [value]="1">Individual</option>
+                  <option [value]="2">Company</option>
+                </select>
+              </div>
+            </div>
+            <!--./ User Type -->
+          </div>
+
+          <div class="row">
+            <!-- Email -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input type="email" formControlName="email" placeholder="ex. john@gmail.com"
+                  [class.is-invalid]="isInvalid('email')">
+
+                <div *ngIf="isInvalid('email')" class="invalid-error-block">
+                  <span *ngIf="controls.email.errors.required" class="form-control-feedback">Email is required!</span>
+                  <span *ngIf="controls.email.errors.email" class="form-control-feedback">Invalid email
+                    address!</span>
+                </div>
+
+                <div *ngIf="validationErrors?.email" class="invalid-error-block">
+                  <span class="form-control-feedback">{{ validationErrors?.email[1] }}</span>
+                </div>
+              </div>
+            </div>
+            <!--./ Email -->
+
+            <!-- Password -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Password *</label>
+                <input type="password" formControlName="password" [class.is-invalid]="isInvalid('password')">
+
+                <div *ngIf="isInvalid('password')" class="invalid-error-block">
+                  <span *ngIf="controls.password.errors.required" class="form-control-feedback">Password is
+                    required!</span>
+                  <span *ngIf="controls.password.errors.minlength" class="form-control-feedback">Password must be at
+                    least 6 characters long!</span>
+                </div>
+
+                <div *ngIf="validationErrors?.password" class="invalid-error-block">
+                  <span class="form-control-feedback">{{ validationErrors?.password[1] }}</span>
+                </div>
+              </div>
+            </div>
+            <!--./ Password -->
+          </div>
+
+          <div *ngIf="controls.type.value == userTypes.INDIVIDUAL" class="row">
+            <!-- First Name -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input type="text" formControlName="firstName" placeholder="ex. John"
+                  [class.is-invalid]="isInvalid('firstName')">
+
+                <div *ngIf="isInvalid('firstName')" class="invalid-error-block">
+                  <span *ngIf="controls.firstName.errors.required" class="form-control-feedback">First name is
+                    required!</span>
+                </div>
+
+                <div *ngIf="validationErrors?.firstName" class="invalid-error-block">
+                  <span class="form-control-feedback">{{ validationErrors?.firstName[1] }}</span>
+                </div>
+              </div>
+            </div>
+            <!--./ First Name -->
+
+            <!-- Last Name -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input type="text" formControlName="lastName" placeholder="ex. Smith"
+                  [class.is-invalid]="isInvalid('lastName')">
+
+                <div *ngIf="isInvalid('lastName')" class="invalid-error-block">
+                  <span *ngIf="controls.lastName.errors.required" class="form-control-feedback">Last name is
+                    required!</span>
+                </div>
+
+                <div *ngIf="validationErrors?.lastName" class="invalid-error-block">
+                  <span class="form-control-feedback">{{ validationErrors?.lastName[1] }}</span>
+                </div>
+              </div>
+            </div>
+            <!--./ Last Name -->
+          </div>
+
+          <div class="row">
+            <!-- Country -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Country</label>
+                <select formControlName="countryID" id="select-country" class="form-select"
+                  [class.is-invalid]="isInvalid('countryID')">
+                  <option [value]=""></option>
+                  <option *ngFor="let country of countries" [value]="country.ID">{{ country.name }}</option>
+                </select>
+
+                <div *ngIf="isInvalid('countryID')" class="invalid-error-block">
+                  <span *ngIf="controls.countryID.errors.required" class="form-control-feedback">Country is
+                    required!</span>
+                </div>
+
+                <div *ngIf="validationErrors?.countryID" class="invalid-error-block">
+                  <span class="form-control-feedback">{{ validationErrors?.countryID[1] }}</span>
+                </div>
+              </div>
+            </div>
+            <!--./ Country -->
+          </div>
+
+          <ng-container *ngIf="controls.type.value == userTypes.COMPANY">
+            <div class="row">
+              <!-- Company Name -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Company Name</label>
+                  <input type="text" formControlName="companyName" placeholder="ex. IT marketing"
+                    [class.is-invalid]="isInvalid('companyName')">
+
+                  <div *ngIf="isInvalid('companyName')" class="invalid-error-block">
+                    <span *ngIf="controls.companyName.errors.required" class="form-control-feedback">Company name is
+                      required!</span>
+                  </div>
+
+                  <div *ngIf="validationErrors?.companyName" class="invalid-error-block">
+                    <span class="form-control-feedback">{{ validationErrors?.companyName[1] }}</span>
+                  </div>
+                </div>
+              </div>
+              <!--./ Company Name -->
+
+              <!-- Company Address -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Company Address</label>
+                  <input type="text" formControlName="companyAddress" placeholder="ex. 30 street Newyork USA"
+                    [class.is-invalid]="isInvalid('companyAddress')">
+
+                  <div *ngIf="isInvalid('companyAddress')" class="invalid-error-block">
+                    <span *ngIf="controls.companyAddress.errors.required" class="form-control-feedback">Company
+                      address is required!</span>
+                  </div>
+
+                  <div *ngIf="validationErrors?.companyAddress" class="invalid-error-block">
+                    <span class="form-control-feedback">{{ validationErrors?.companyAddress[1] }}</span>
+                  </div>
+                </div>
+              </div>
+              <!--./ Company Address -->
+            </div>
+
+            <div class="row">
+              <!-- Company Registration Number -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Company Registration Number</label>
+                  <input type="text" formControlName="companyRegistrationNumber" placeholder="ex. IT1001"
+                    [class.is-invalid]="isInvalid('companyRegistrationNumber')">
+
+                  <div *ngIf="isInvalid('companyRegistrationNumber')" class="invalid-error-block">
+                    <span *ngIf="controls.companyRegistrationNumber.errors.required"
+                      class="form-control-feedback">Company registraion number is required!</span>
+                  </div>
+
+                  <div *ngIf="validationErrors?.companyRegistrationNumber" class="invalid-error-block">
+                    <span class="form-control-feedback">{{ validationErrors?.companyRegistrationNumber[1] }}</span>
+                  </div>
+                </div>
+              </div>
+              <!--./ Company Registration Number -->
+
+              <!-- Company Vat Number -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Company VAT Number</label>
+                  <input type="text" formControlName="companyVATNumber" placeholder="ex. 10000"
+                    [class.is-invalid]="isInvalid('companyVATNumber')">
+
+                  <div *ngIf="isInvalid('companyVATNumber')" class="invalid-error-block">
+                    <span *ngIf="controls.companyVATNumber.errors.required" class="form-control-feedback">Company VAT
+                      number is required!</span>
+                  </div>
+
+                  <div *ngIf="validationErrors?.companyVATNumber" class="invalid-error-block">
+                    <span class="form-control-feedback">{{ validationErrors?.companyVATNumber[1] }}</span>
+                  </div>
+                </div>
+              </div>
+              <!--./ Company Vat Number -->
+            </div>
+
+            <div class="row">
+              <!-- Contact First Name -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Contact First Name</label>
+                  <input type="text" formControlName="contactFirstName" placeholder="ex. Jane"
+                    [class.is-invalid]="isInvalid('contactFirstName')">
+
+                  <div *ngIf="isInvalid('contactFirstName')" class="invalid-error-block">
+                    <span *ngIf="controls.contactFirstName.errors.required" class="form-control-feedback">Contact
+                      first name is required!</span>
+                  </div>
+
+                  <div *ngIf="validationErrors?.contactFirstName" class="invalid-error-block">
+                    <span class="form-control-feedback">{{ validationErrors?.contactFirstName[1] }}</span>
+                  </div>
+                </div>
+              </div>
+              <!--./ Contact First Name -->
+
+              <!-- Contact Last Name -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Contact Last Name</label>
+                  <input type="text" formControlName="contactLastName" placeholder="ex. Lora"
+                    [class.is-invalid]="isInvalid('contactLastName')">
+
+                  <div *ngIf="isInvalid('contactLastName')" class="invalid-error-block">
+                    <span *ngIf="controls.contactLastName.errors.required" class="form-control-feedback">Contact last
+                      name is required!</span>
+                  </div>
+
+                  <div *ngIf="validationErrors?.contactLastName" class="invalid-error-block">
+                    <span class="form-control-feedback">{{ validationErrors?.contactLastName[1] }}</span>
+                  </div>
+                </div>
+              </div>
+              <!--./ Contact Last Name -->
+            </div>
+          </ng-container>
+        </div>
+        <!--./ user information form-->
+        
+      </div>
+      <!--./ step 2 -->
+
+      <!-- step 3 -->
+      <div class="step-body" style="margin-bottom: 20px">
+        <div class="step-head">
+          <span class="badge badge-secondary pull-left">Step 2</span>
+          <h5>Select a payment method</h5>
+        </div>
+        
+        <!-- select payment type -->
+        <div class="row">
+
+          <!-- select stripe -->
+          <div class="col-md-4">
+            <div class="card payment-type" (click)="onSelectPayment(paymentTypes.STRIPE)"
+              [class.active]="controls.paymentType.value == paymentTypes.STRIPE">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="radio-stripe" 
+                  formControlName="paymentType" name="paymentType" [value]="paymentTypes.STRIPE">
+                <label class="custom-control-label" for="radio-stripe">Credit Card</label>
+              </div>
+    
+              <div class="card-body">
+                  <div class="card-img-container">
+                    <img class="card-img mr-2" src="https://s1.nordcdn.com/nordvpn/media/1.147.0/images/global/logos/mini/visa-loose-16.svg" alt="visa">
+                    <img class="card-img mr-2" src="https://s1.nordcdn.com/nordvpn/media/1.147.0/images/global/logos/mini/mastercard-loose-16.svg" alt="mastercard">
+                    <img class="card-img mr-2" src="https://s1.nordcdn.com/nordvpn/media/1.147.0/images/global/logos/mini/amex-loose-16.svg" alt="amex">
+                    <img class="card-img mr-2" src="https://s1.nordcdn.com/nordvpn/media/1.147.0/images/global/logos/mini/discover-loose-16.svg" alt="discover">
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!--./ select stripe -->
+
+          <!-- select paypal -->
+          <div class="col-md-4">
+            <div class="card payment-type" (click)="onSelectPayment(paymentTypes.PAYPAL)"
+              [class.active]="controls.paymentType.value == paymentTypes.PAYPAL">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="radio-paypal" 
+                  formControlName="paymentType" name="paymentType" [value]="paymentTypes.PAYPAL">
+                <label class="custom-control-label" for="radio-paypal">Paypal</label>
+              </div>
+    
+              <div class="card-body">
+                  <div class="card-img-container">
+                    <img class="card-img mr-2" src="assets/img/common/PayPal.svg.png" alt="visa">
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!--./ select paypal -->
+        </div>
+        <!--./ select payment type -->
+
+        <!-- input payment information -->
+        <div class="row mt-25">
+
+          <div class="col-md-8">
+            <div class="card payment-info">
+
+              <div class="payment-desc">
+                <div class="clearfix info-row">
+                  <span class="pull-left price-desc">ZauberVPN 1-year plan</span>
+                  <span class="pull-right price">{{ currencySign }}{{ curAmount | number: '0.2-2' }}</span>
+                </div>
+  
+                <div class="clearfix info-row">
+                  <span class="pull-left price-desc">VAT</span>
+                  <span class="pull-right price">{{ curVat | number: '0.2-2' }}%</span>
+                </div>
+  
+                <div class="clearfix info-row mt-20">
+                  <span class="pull-left total-price-desc">Total</span>
+                  <span class="pull-right total-price">{{ currencySign }}{{ totalAmount | number: '0.2-2' }}</span>
+                </div>
+              </div>
+              <hr />
+
+              <div class="payment-form">
+
+                <app-alert></app-alert>
+
+                <!-- stripe form -->
+                <div *ngIf="controls.paymentType.value == paymentTypes.STRIPE; else paypalForm">
+                  <div class="form-group">
+                    <label class="control-label">Name on card</label>
+                    <input formControlName="stripeName" class="form-control" [class.is-invalid]="isInvalid('stripeName')" />
+  
+                    <div *ngIf="isInvalid('stripeName')" class="invalid-error-block">
+                      <span *ngIf="controls.stripeName.errors.required" class="form-control-feedback">Name is required!</span>
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label class="control-label">Card number</label>
+                    <input formControlName="stripeNumber" class="form-control"
+                      [class.is-invalid]="isInvalid('stripeNumber')" placeholder="0000 0000 0000 0000" />
+  
+                    <div *ngIf="isInvalid('stripeNumber')" class="invalid-error-block">
+                      <span *ngIf="controls.stripeNumber.errors.required" class="form-control-feedback">Card number is required!</span>
+                    </div>
+                  </div>
+  
+                  <div class="form-group row">
+                    <div class="col-md-5">
+                      <label class="control-label">Expiration date</label>
+                      <div class="d-flex">
+                          <select formControlName="stripeMonth" class="form-control">
+                            <option *ngFor="let month of monthList" [value]="month">{{ month }}</option>
+                          </select>
+                          <span class="split-date">/</span>
+                          <select formControlName="stripeYear" class="form-control">
+                            <option *ngFor="let year of yearList" [value]="year">{{ year }}</option>
+                          </select>
+                      </div>
+                      
+                    </div>
+  
+                    <div class="col-md-3">
+                      <label class="control-label">CVC</label>
+                      <input formControlName="stripeCVC" class="form-control" [class.is-invalid]="isInvalid('stripeCVC')" placeholder="000"/>
+  
+                      <div *ngIf="isInvalid('stripeCVC')" class="invalid-error-block">
+                        <span *ngIf="controls.stripeCVC.errors.required" class="form-control-feedback">CVC is required!</span>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <label class="control-label">Postal code</label>
+                      <input class="form-control" formControlName="stripePostal" />
+                    </div>
+                  </div>
+                </div>
+                <!--./ stripe form -->
+                
+                <!--./ paypal form -->
+                <ng-template #paypalForm>
+                  <p>For paypal, please register user first and login and retry pay.</p>
+                </ng-template>
+                <!--./ paypal form -->
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--./ input payment information -->
+      </div>
+      <!--./ step 3 -->
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" formControlName="checkTerms">
+        <label class="form-check-label" for="defaultCheck1">
+          I accept the <a href="#" style="text-decoration: underline; color: blue">Terms and Condition</a> of zauberVpn
+        </label>
+      </div>
+      <br />
+
+      <div class="text-center">
+        <button *ngIf="!paymentError" type="submit" class="butn butn-bg"><span>Register</span></button>
+        <button *ngIf="paymentError" type="button" class="butn butn-bg" (click)="toVerifyEmail()"><span>To Verify Email</span></button>
+      </div>
+    </form>
+  </div>
+</section>

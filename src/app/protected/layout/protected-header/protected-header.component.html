@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="icon-bar"><i class="fa fa-bars"></i></span>
+    </button>
+
+    <!-- navbar links -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!-- Logo -->
+      <a class="logo" routerLink="/" style="width: 175px">
+        <img src="assets/img/logo_horizontal.png" alt="logo"/>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="icon-bar"><i class="fa fa-bars"></i></span>
+      </button>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Account</a>
+        </li>
+    
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/account/subscription" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Subscription</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/account/transactions" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Transactions</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/account/sessions" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sessions</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/account/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Contact</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLinkActive="active" (click)="onLogOut($event)">Log out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

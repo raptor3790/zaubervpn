@@ -1,0 +1,169 @@
+<header class="header valign bg-img" data-overlay-dark="9" data-background="img/bg-personal.jpg" data-stellar-background-ratio="0.5">
+
+    <!-- particles -->
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 caption mt-30">
+                <h1>Fast and secure VPN</h1>
+                <h3>Advantages</h3><br />
+                <p><i class="fa fa-check" aria-hidden="true"></i> Surf anonymously</p>
+                <p><i class="fa fa-check" aria-hidden="true"></i> Unblock your favourite websites</p>
+                <p><i class="fa fa-check" aria-hidden="true"></i> VPN servers in 114 cities across 64 countries</p>
+                <p><i class="fa fa-check" aria-hidden="true"></i> Trusted by millions around the world</p>
+            </div>
+            <div class="col-md-6 mt-30">
+                <img src="assets/img/home-vpn1.png" width="100%"/>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="hero-pr section-padding bg-img bg-fixed" data-background="assets/img/p1.png" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-6">
+                <div class="author-img hover3d">
+                    <img src="assets/img/home/portfolio1.jpg" class="hover3d-child" alt="">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="content">
+                    <h3>Anywhere possible</h3>
+                    <h6>I am Alex Smith</h6>
+                    <span class="sub">UI/UX Designer & Web Developer</span>
+                    <p>uspendisse ex neque, sollicitudin in velit eu, luctus gravida nunc. Quisque placerat vitae lacus ut scelerisque. Fusce luctus odio ac nibh luctus, in porttitor lacus egestas. Dummy text generator with great features.</p>
+                    <a href="#0" class="butn butn-bg mt-30" data-scroll-nav="5">
+                        <span>Lear More</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="hero-pr section-padding bg-img bg-fixed" data-background="assets/img/p1.png" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-6">
+                <div class="content">
+                    <h3>Secure Services</h3>
+                    <h6>This is very strong Secure</h6>
+                    <span class="sub">UI/UX Designer & Web Developer</span>
+                    <p>uspendisse ex neque, sollicitudin in velit eu, luctus gravida nunc. Quisque placerat vitae lacus ut scelerisque. Fusce luctus odio ac nibh luctus, in porttitor lacus egestas. Dummy text generator with great features.</p>
+                    <a href="#0" class="butn butn-bg mt-30" data-scroll-nav="5">
+                        <span>Lear More</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="author-img hover3d">
+                    <img src="assets/img/home/portfolio2.jpg" class="hover3d-child" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Features and Services -->
+<section class="services serv-box section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+
+            <div class="section-head text-center col-sm-12">
+                <h6>Our Services</h6>
+                <h4>Our <span>Awesome</span> Featurse</h4>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="item mb-md50">
+                    <span class="icon icon-basic-book-pencil"></span>
+                    <h6>Creative Design</h6>
+                    <p>A decade ago, we founded Melinda with the goal of creating meaningful digital experiences.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="item mb-md50">
+                    <span class="icon icon-basic-pencil-ruler"></span>
+                    <h6>User Experience</h6>
+                    <p>A decade ago, we founded Melinda with the goal of creating meaningful digital experiences.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="item mb-sm50">
+                    <span class="icon icon-basic-anchor"></span>
+                    <h6>Customizability</h6>
+                    <p>A decade ago, we founded Melinda with the goal of creating meaningful digital experiences.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="item">
+                    <span class="icon icon-basic-picture"></span>
+                    <h6>Retina Ready</h6>
+                    <p>A decade ago, we founded Melinda with the goal of creating meaningful digital experiences.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--./ Features and Services -->
+
+<!-- Pricing Table -->
+<section class="price section-padding">
+    <div class="container">
+        <div class="row">
+            
+            <div class="section-head text-center col-sm-12">
+                <h6>Available Plans</h6>
+                <h4><span>Choose</span> You Plan</h4>
+            </div>
+
+            <div class="pricing-tables full-width">
+
+                <div class="row price">
+
+                    <div *ngFor="let planItem of globalPlans" class="col-lg-4">
+                        <div class="item mb-md50">
+                            <div class="type">
+                                <h4>{{ planItem.name }}</h4>
+                            </div>
+
+                            <div class="value">
+                                <h3><span>$</span>{{ planItem.price }}</h3>
+                                <span class="per">/ Month</span>
+                            </div>
+
+                            <div class="features">
+                                <ul>
+                                    <li>{{ planItem.description }}</li>
+                                    <li>Total: ${{ planItem.price * planItem.months }} / {{ planItem.months }} months</li>
+                                </ul>
+                            </div>
+
+                            <div class="order">
+                                <a [routerLink]="['/auth/subscribe', planItem.ID]" class="butn butn-bord">
+                                    <span>Subscribe</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--./ Pricing Table -->

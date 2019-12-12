@@ -1,0 +1,170 @@
+﻿<section class="content">
+  <app-loading [condition]="loading"></app-loading>
+  <div class="container">
+    <div class="section-head text-center">
+      <h3>Account Information</h3>
+    </div>
+
+    <div class="row">
+
+      <!-- active subscription -->
+      <div class="col-md-6 pr-4">
+        <div class="card p-5">
+          <h6>Subscription</h6>
+          <br /><br />
+
+          <!-- plan name -->
+          <div class="row info-row">
+            <div class="col-md-3 text-right">
+              <strong>Plan:</strong>
+            </div>
+
+            <div class="col-md-9">
+              {{ activeSubscription?.subscriptionPlan?.name }}
+            </div>
+          </div>
+          <!--./ plan name -->
+
+          <!-- Start Date -->
+          <div class="row info-row">
+            <div class="col-md-3 text-right">
+              <strong>Start Date:</strong>
+            </div>
+
+            <div class="col-md-9">
+              {{ activeSubscription?.startDate | date:'yyyy-MM-dd' }}
+            </div>
+          </div>
+          <!-- Start Date -->
+
+          <!-- End Date -->
+          <div class="row info-row">
+            <div class="col-md-3 text-right">
+              <strong>End Date:</strong>
+            </div>
+
+            <div class="col-md-9">
+              {{ activeSubscription?.endDate | date:'yyyy-MM-dd' }}
+            </div>
+          </div>
+          <!-- End Date -->
+
+          <!-- Remaining Days -->
+          <div class="row info-row">
+            <div class="col-md-3 text-right">
+              <strong>Remain:</strong>
+            </div>
+
+            <div class="col-md-9">
+              {{ activeSubscription?.remainingDays }} days
+            </div>
+          </div>
+          <!-- Remaining Days -->
+          <br /><br />
+
+          <div class="text-center">
+            <button type="button" class="butn butn-bg" routerLink="/account/subscription"><span>New
+                Subscription</span></button>
+          </div>
+        </div>
+      </div>
+      <!--./ active subscription -->
+
+      <!-- user information -->
+      <div class="col-md-6 pr-4">
+        <div class="card p-5">
+          <h6>Account Information</h6>
+          <br /><br />
+
+          <!-- user name -->
+          <div class="row info-row">
+            <div class="col-md-3 text-right">
+              <strong>Name:</strong>
+            </div>
+
+            <div class="col-md-9">
+              {{ userInfo?.firstName + ' ' + userInfo?.lastName }}
+            </div>
+          </div>
+          <!--./ user name -->
+
+          <!-- email -->
+          <div class="row info-row">
+            <div class="col-md-3 text-right">
+              <strong>Email:</strong>
+            </div>
+
+            <div class="col-md-9">
+              {{ userInfo?.email }}
+            </div>
+          </div>
+          <!--./ email -->
+
+          <!-- user type -->
+          <div class="row info-row">
+            <div class="col-md-3 text-right">
+              <strong>Type:</strong>
+            </div>
+
+            <div class="col-md-9">
+              {{ userInfo?.type == 1 ? 'Individual' : 'Company' }}
+            </div>
+          </div>
+          <!--./ user type -->
+
+          <!-- country -->
+          <div class="row info-row">
+            <div class="col-md-3 text-right">
+              <strong>Country:</strong>
+            </div>
+
+            <div class="col-md-9">
+              {{ userInfo?.country?.name }}
+            </div>
+          </div>
+          <!--./ country -->
+
+        </div>
+      </div>
+      <!--./ user information -->
+
+      <!-- change password -->
+      <div class="col-md-6 pr-4 mt-20">
+        <div class="card p-5">
+          <h6>Change Password</h6>
+          <br /><br />
+
+          <form [formGroup]="passwordForm" (ngSubmit)="onChangePassword($event)" class="form form-horizontal">
+            <app-alert></app-alert>
+            <div class="controls">
+
+              <div class="form-group">
+                <label class="form-label">Old Password</label>
+                <input type="password" formControlName="oldPassword" />
+
+                <div *ngIf="validationErrors?.oldPassword" class="invalid-error-block">
+                  <span class="form-control-feedback">{{ validationErrors?.oldPassword[1] }}</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">New Password</label>
+                <input type="password" formControlName="password" />
+
+                <div *ngIf="validationErrors?.newPassword" class="invalid-error-block">
+                  <span class="form-control-feedback">{{ validationErrors?.newPassword[1] }}</span>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="butn butn-bg"><span>Change Password</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--./ change password -->
+    </div>
+
+  </div>
+</section>

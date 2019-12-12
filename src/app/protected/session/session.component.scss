@@ -1,0 +1,48 @@
+.content {
+    margin-top: 93px;
+    min-height: 500px;
+    padding: 80px 0;
+
+    .section-head {
+        margin-bottom: 50px;
+
+        h3 {
+            font-weight: 300;
+        }
+    }
+
+    h6 {
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    table {
+        td, th {
+            word-break: break-all;
+        }
+
+        td.no, th.no {
+            width: 5%;
+        }
+
+        td.session-id, th.session-id {
+            width: 35%;
+        }
+
+        td.device-id, th.device-id {
+            width: 20%;
+        }
+
+        td.device-name, th.device-name {
+            width: 15%;
+        }
+
+        td.expires-in, th.expires-in {
+            width: 15%;
+        }
+
+        td.action, th.action {
+            width: 10%;
+        }
+    }
+}

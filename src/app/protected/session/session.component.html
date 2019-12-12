@@ -1,0 +1,39 @@
+﻿<section class="content">
+  <app-loading [condition]="loading"></app-loading>
+  <div class="container">
+    <div class="section-head text-center">
+      <h3>Sessions</h3>
+    </div>
+
+    <div class="row">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="no">No</th>
+            <th class="session-id">Session ID</th>
+            <th class="device-id">Device ID</th>
+            <th class="device-name">Device Name</th>
+            <th class="expires-in">Expires In</th>
+            <th class="action">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let session of sessions; let i=index;">
+            <td class="no">{{ i + 1 }}</td>
+            <td class="session-id">{{ session.sessionID }}</td>
+            <td class="device-id">{{ session.deviceID }}</td>
+            <td class="device-name">{{ session.deviceName }}</td>
+            <td class="expires-in">{{ session.expiresIn | date: 'yyyy-MM-dd HH-mm' }}</td>
+            <td class="action">
+              <button type="button" class="btn btn-danger" (click)="onDelete(session.sessionID)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>

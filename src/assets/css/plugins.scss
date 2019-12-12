@@ -1,0 +1,33 @@
+/*-----------------------------------------------------------------------------------
+
+	Theme Name: Arco
+	Theme URI: http://
+	Description: The Multi-Purpose Onepage Template
+	Author: ui-themez
+	Author URI: http://themeforest.net/user/ui-themez
+	Version: 1.0
+
+-----------------------------------------------------------------------------------*/
+
+/* ----------------------------------------------------------------
+			[ All Css Plugins & Helper Classes File ]
+-----------------------------------------------------------------*/
+
+/* == bootstrap == */
+@import "./plugins/bootstrap.min.scss";
+
+/* == animate css == */
+@import "./plugins/animate.min.scss";
+
+/* == linea-basic icon font == */
+@import "./plugins/linea-basic.scss";
+
+/* == magnific-popup == */
+@import "./plugins/magnific-popup.scss";
+
+/* == owl.carousel == */
+@import "./plugins/owl.carousel.min.scss";
+@import "./plugins/owl.theme.default.min.scss";
+
+/* == helper classes == */
+@import "./plugins/helper.scss";
